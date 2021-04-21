@@ -17,7 +17,7 @@ pipeline {
 
           stage('deployment stage') {
               steps {
-                python app.py
+                python3 app.py
         }
     }
 
