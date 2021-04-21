@@ -17,7 +17,7 @@ pipeline {
 
           stage('deployment stage') {
               steps {
-                echo "mvn deploy"
+                python app.py
         }
     }
 
