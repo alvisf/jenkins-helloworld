@@ -14,7 +14,7 @@ pipeline {
         }
         stage('Deploy') {
             steps {
-                sh 'python3 app.py'
+                sh 'sudo python3 app.py >> log.txt 2>&1 &'
             }
         }
     }
