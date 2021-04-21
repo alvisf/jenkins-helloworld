@@ -1,31 +1,28 @@
-pipline {
-  
-  agent any
-  
-  stages {
-    
-    stage("build"){
-      
-      steps{
-        echo "Building the application......"
-      }
-      
+pipeline {
+
+    agent any
+    tools {
+        maven 'Maven_3.5.2' 
     }
-    
-    stage("test"){
-      
-      steps{
-        echo "testing the application......"
-      }
-      
+    stages {
+        stage('Compile stage') {
+            steps {
+                bat "mvn clean compile" 
+        }
     }
-    
-    stage("deploy"){
-      
-      steps{
-        echo "Deploying the application......"
-      }
-      
+
+         stage('testing stage') {
+             steps {
+                bat "mvn test"
+        }
     }
+
+          stage('deployment stage') {
+              steps {
+                bat "mvn deploy"
+        }
+    }
+
   }
-}  
+
+}
