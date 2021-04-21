@@ -7,14 +7,20 @@ pipeline {
                 sh 'sudo pip3 install flask'
             }
         }
-        stage('Test') {
+        stage('Distroy') {
             steps {
-                echo 'Testing'
+                sh 'sudo kill $(sudo lsof -t -i:80)'
+            }
+        }
+        stage('Next') {
+            steps {
+                sh ''
             }
         }
         stage('Deploy') {
             steps {
-                sh 'sudo python3 app.py >> log.txt 2>&1 &'
+                sh 'sudo nohup python3 app.py &'
+                
             }
         }
     }
