@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                echo 'Building'
+                sh 'pip3 install flask'
             }
         }
         stage('Test') {
