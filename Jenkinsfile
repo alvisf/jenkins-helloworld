@@ -7,11 +7,16 @@ pipeline {
                 sh 'sudo pip3 install flask'
             }
         }
-        stage('Distroy') {
-            steps {
-                sh 'sudo kill $(sudo lsof -t -i:80)'
+        
+        try{
+            stage('Distroy') {
+                sh 'sudo kill $(sudo lsof -t -i:80)' 
             }
+        } catch(e) {
+            echo e.toString()  
         }
+        
+
         stage('Next') {
             steps {
                 sh ''
